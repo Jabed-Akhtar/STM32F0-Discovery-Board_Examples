@@ -13,8 +13,9 @@
 | 2     | PushButton_EXTIInterrupt_LED      | ...                   |
 | 3     | Timer_TIM6_LEDBlink               | ...                   |
 | 4     | Timer_TIM6_DelayFun               | ...                   |
-| 5     | UART                              | ...                   |
-| 5     | UART_DMA                          | ...                   |
+| 5     | Timer_PWM                         | ...                   |
+| 6     | UART                              | ...                   |
+| 7     | UART_DMA                          | ...                   |
 
 #### Timer_TIM6_LEDBlink
 TIM6 is easier to use.
