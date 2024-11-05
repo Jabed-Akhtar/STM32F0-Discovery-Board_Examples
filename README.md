@@ -16,6 +16,7 @@
 | 5     | Timer_PWM                         | ...                   |
 | 6     | UART                              | ...                   |
 | 7     | UART_DMA                          | ...                   |
+| 8     | ADC                               | ...                   |
 
 #### Timer_TIM6_LEDBlink
 TIM6 is easier to use.
