@@ -5,6 +5,8 @@
 * @author: Jabed-Akhtar (Github)
 * @date: 19-December-2024
 ******************************************************************************
+* Some codes are taken from: https://youtu.be/X7WZQka2FHQ?si=LslXoTpqrHOTZHdT
+******************************************************************************
 * Description: This is a IIC Slave Node. On receiving message through, it toggles
 * 		LEDs. Two kinds of messages are expected.
 * 			1. Counter message (0th position counter value)
