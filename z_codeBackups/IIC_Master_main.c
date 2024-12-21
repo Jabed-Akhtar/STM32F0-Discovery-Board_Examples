@@ -51,9 +51,9 @@ HAL_StatusTypeDef ret_hal;
 
 uint8_t counter_periodic = 0;
 
-uint16_t slaveAddr = (0x12<<1);
+uint16_t IIC_Slave_ADDR = (0x12<<1);
 uint8_t TxData_Periodic[6] = {0x0, 0x0, 0x0, 0x0, 0x0, 0x0};
-uint8_t TxData_Once[6] = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6};
+uint8_t TxData_Once[6] = {0x0, 0x1, 0x2, 0x3, 0x4, 0x5};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -310,7 +310,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	HAL_StatusTypeDef iic_tx_status;
@@ -324,7 +323,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 	TxData_Once[sizeof(TxData_Once)-1] = Val_Tmp[0];
 
-	iic_tx_status = HAL_I2C_Master_Transmit_DMA(&hi2c1, slaveAddr, TxData_Once, 6); //Sending in DMA mode
+	iic_tx_status = HAL_I2C_Master_Transmit_DMA(&hi2c1, IIC_Slave_ADDR, TxData_Once, 6); //Sending in DMA mode
 
 	if (iic_tx_status==HAL_OK)
 	{
@@ -332,17 +331,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	}
 	else
 	{
-		// Empts for now
+		// Empty for now
 	}
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if (htim->Instance == TIM6){
-	  HAL_StatusTypeDef iic_tx_status;
+	HAL_StatusTypeDef iic_tx_status;
 	TxData_Periodic[0] = counter_periodic;
 
-	iic_tx_status = HAL_I2C_Master_Transmit_DMA(&hi2c1, slaveAddr, TxData_Periodic, 6); //Sending in DMA mode
+	iic_tx_status = HAL_I2C_Master_Transmit_DMA(&hi2c1, IIC_Slave_ADDR, TxData_Periodic, 6); //Sending in DMA mode
 
 	if (iic_tx_status==HAL_OK)
 	{
