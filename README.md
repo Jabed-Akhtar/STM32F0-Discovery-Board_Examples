@@ -26,6 +26,7 @@
 | 10    | LCDDisplay1602_via_IIC       | ...                     |
 | 11    | ADC                          | ...                     |
 | 12    | LED_Blink_CMake              | STM32CubeIDE, and CMake |
+| 13    | DHT11_TemperatureNHumidity   | ...                     |
 
 #### Timer_TIM6_LEDBlink
 TIM6 is easier to use.
