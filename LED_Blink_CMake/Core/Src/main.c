@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "app_entry.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,15 +87,17 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  HAL_GPIO_TogglePin(GPIOC, LED_Blue_Pin);
+  app_entry();
+
+  // HAL_GPIO_TogglePin(GPIOC, LED_Blue_Pin);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	HAL_Delay(100);
-	HAL_GPIO_TogglePin(GPIOC, LED_Blue_Pin|LED_Green_Pin);
+    // HAL_Delay(100);
+    // HAL_GPIO_TogglePin(GPIOC, LED_Blue_Pin | LED_Green_Pin);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
