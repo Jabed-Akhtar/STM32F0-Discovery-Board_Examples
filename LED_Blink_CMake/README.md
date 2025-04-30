@@ -25,6 +25,11 @@ Project/
 - Install Ninja: `pacman -S ninja`
 - Windows tool to compile code for ARM microcontrollers: `pacman -S mingw-w64-x86_64-arm-none-eabi-gcc`
 
+## Files for CMake
+- Toolchain file: "*./gcc-arm-none-eabi.cmake*" (!!! Not yet included)
+- Project configuration file: "*./CMakeLists.txt*"
+- Configuration file for VS-Code for C/C++ extension: "*./.vscode/c_cpp_properties.json*"
+
 ## Generate project using *STM32CubeIDE*
 1. Create *STM32 Project* in *STM32CubeIDE*, and generate code.
 2. Write code as required. In this example, code for blinking LEDs is written as below:  
