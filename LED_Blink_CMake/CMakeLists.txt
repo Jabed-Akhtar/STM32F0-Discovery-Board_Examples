@@ -2,7 +2,7 @@
 # @file             : CMakeLists.txt
 # @file-Location    : <project-root-folder>
 # @author           : Jabed-Akhtar (github)
-# @date-of-creation : 2025.04.29
+# @date-of-creation : 2025.04.25
 # ************************************************
 
 # ================================================
@@ -25,7 +25,7 @@ set(CMAKE_ASM_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 # ================================================
 # 2. Project definition
 # ================================================
-set(PROJECT_NAME "LED_Blink_CMake")
+set(PROJECT_NAME "DCMotor_PositionNSpeedCtrl")
 
 # Define project name, version and languages
 project(${PROJECT_NAME}
