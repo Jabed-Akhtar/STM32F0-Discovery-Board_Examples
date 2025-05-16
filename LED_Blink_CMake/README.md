@@ -1,10 +1,34 @@
 
+## Project structure:
+```text
+Project/
+|- .vscode
+|- Core/
+│   ├── Inc/                        # Header files
+│   ├── Src/                        # Source files
+│   └── Startup/
+│       └── startup_stm32f051r8tx.s # Startup script
+|- Drivers
+|- .cproject
+|- .mxproject
+|- .project
+|- CMakeLists.txt
+|- LED_Blink_CMake Debug.launch
+|- LED_Blink_CMake.ioc
+|- STM32F051R8TX_FLASH.ld           # Linker script
+```
+
 ## Tools required and setup
 - Install *MSYS2*. After installing *MSYS2*, use *MSYS2 MINGW64 Shell*. All required tools can then be installed in the *MSYS2*.
 - Update the *MSYS2* packages: `pacman -Sy`
 - Install CMake: `pacman -S cmake`
 - Install Ninja: `pacman -S ninja`
 - Windows tool to compile code for ARM microcontrollers: `pacman -S mingw-w64-x86_64-arm-none-eabi-gcc`
+
+## Files for CMake
+- Toolchain file: "*./gcc-arm-none-eabi.cmake*" (!!! Not yet included)
+- Project configuration file: "*./CMakeLists.txt*"
+- Configuration file for VS-Code for C/C++ extension: "*./.vscode/c_cpp_properties.json*"
 
 ## Generate project using *STM32CubeIDE*
 1. Create *STM32 Project* in *STM32CubeIDE*, and generate code.

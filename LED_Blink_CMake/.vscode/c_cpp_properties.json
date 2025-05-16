@@ -1,0 +1,26 @@
+// Configuration file for VS-Code for C/C++ extension
+{
+    "configurations": [
+        {
+            // Descriptive name for this configuration
+            "name": "STM32 CMake",
+            // List of paths to the header files
+            "includePath": [
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F0xx/Include",
+                "${workspaceFolder}/Drivers/STM32F0xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32F0xx_HAL_Driver/Inc/Legacy"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F051x8"
+            ],
+            "compilerPath": "C:/msys64/mingw64/bin/arm-none-eabi-gcc.exe",
+            "cStandard": "c11",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    // Schema version for the C/C++ extension
+    "version": 4
+}

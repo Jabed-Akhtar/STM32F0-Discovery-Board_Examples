@@ -2,7 +2,7 @@
 # @file             : CMakeLists.txt
 # @file-Location    : <project-root-folder>
 # @author           : Jabed-Akhtar (github)
-# @date-of-creation : 2025.04.29
+# @date-of-creation : 2025.04.25
 # ************************************************
 
 # ================================================
@@ -16,14 +16,16 @@ set(CMAKE_SYSTEM_NAME Generic)  # Critical for cross-compilation
 set(CMAKE_SYSTEM_PROCESSOR arm) # Target processor architecture
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)  # Skip host system checks
 
+set(TOOLCHAIN_PREFIX arm-none-eabi-)
+
 # Toolchain configuration
-set(CMAKE_C_COMPILER arm-none-eabi-gcc)
-set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+set(CMAKE_C_COMPILER ${TOOLCHAIN_PREFIX}gcc)
+set(CMAKE_ASM_COMPILER ${TOOLCHAIN_PREFIX}gcc)
 
 # ================================================
 # 2. Project definition
 # ================================================
-set(PROJECT_NAME "LED_Blink_CMake")
+set(PROJECT_NAME "DCMotor_PositionNSpeedCtrl")
 
 # Define project name, version and languages
 project(${PROJECT_NAME}
@@ -136,7 +138,7 @@ target_link_options(${EXECUTABLE} PRIVATE
     --specs=nosys.specs                 # No system calls
 
     # Linker optimizations
-    -Wl,--gc-sections                   # Remove unused sections
+    -Wl,--gc-sections                   # Remove unused sections, gc: garbage collector
     -Wl,--print-memory-usage            # Memory usage report
     -Wl,--cref                          # Add cross-reference table
 
