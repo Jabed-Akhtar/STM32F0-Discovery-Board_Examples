@@ -28,8 +28,10 @@ extern TIM_HandleTypeDef htim6;
 extern UART_HandleTypeDef huart1;
 extern DMA_HandleTypeDef hdma_usart1_tx;
 
+uint8_t pwm_time_counter = 0;
+
 uint8_t uart_tx_pwm[20] = {'\0'};
-uint8_t uart_tx_app_status[20] = {'\0'};
+uint8_t uart_tx_app_status[50] = {'\0'};
 
 uint8_t pwm_duty_percentage;
 
@@ -87,8 +89,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 	if (htim->Instance == TIM6) {
 		HAL_GPIO_TogglePin(GPIOC, LED_Blue_Pin);
 
-		sprintf((char *)uart_tx_app_status, "\n\rDiff.: %lu", Difference);
+		sprintf((char *)uart_tx_app_status, "\n\r, %d, %lu", pwm_duty_percentage, Difference);
 		HAL_UART_Transmit(&huart1, uart_tx_app_status, sizeof(uart_tx_app_status), HAL_MAX_DELAY);
+
+		if (pwm_time_counter >= 50) {
+			pwm_duty_percentage = pwm_duty_percentage + 10;
+			if (pwm_duty_percentage>PWM_DUTY_PREC_MAX)
+			{
+				pwm_duty_percentage = PWM_DUTY_PERC_MIN;
+			}
+			TIM2->CCR1 = pwm_duty_percentage;
+
+			pwm_time_counter = 0;
+		}
+
+		pwm_time_counter++;
 	}
 }
 
@@ -109,10 +124,10 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 				{
 					Difference = IC_Val2-IC_Val1;
 				}
-				else if (IC_Val1 > IC_Val2)
-				{
-					Difference = (0xffff - IC_Val1) + IC_Val2;	// 32-bit -> 0xffff
-				}
+//				else if (IC_Val1 > IC_Val2)
+//				{
+//					Difference = (0xffff - IC_Val1) + IC_Val2;	// 32-bit -> 0xffff
+//				}
 
 				HAL_GPIO_TogglePin(GPIOC, LED_Green_Pin);
 
